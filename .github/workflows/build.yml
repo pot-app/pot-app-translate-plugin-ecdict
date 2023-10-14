@@ -52,10 +52,15 @@ jobs:
         run: move target/${{ matrix.target }}/release/plugin.dll ./plugin.dll
       - name: Download Database
         run: |
-          powershell -c "invoke-webrequest -uri https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/download/0.0.1/stardict.db -outfile stardict.db"
+          powershell -c "invoke-webrequest -uri https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip -outfile ecdict-sqlite-28.zip"
+      - name: extract-7z-action
+        uses: DuckSoft/extract-7z-action@v1.0
+        with:
+          pathSource: ecdict-sqlite-28.zip
+          pathTarget: Database
       - uses: vimtor/action-zip@v1
         with:
-          files: info.json ${{needs.check.outputs.icon}} plugin.dll stardict.db
+          files: info.json ${{needs.check.outputs.icon}} plugin.dll Database
           dest: ${{needs.check.outputs.name}}.potext
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -100,7 +105,7 @@ jobs:
         run: sudo mv target/${{ matrix.target }}/release/libplugin.dylib ./plugin.dylib
       - name: Download Database
         run: |
-          curl -O https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/download/0.0.1/stardict.db
+          curl https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/download/0.0.1/stardict.db -o stardict.db
       - uses: vimtor/action-zip@v1
         with:
           files: info.json ${{needs.check.outputs.icon}} plugin.dylib stardict.db
@@ -149,7 +154,7 @@ jobs:
           toolchain: stable-${{ matrix.target }}
       - name: Download Database
         run: |
-          curl -O https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/download/0.0.1/stardict.db
+          curl https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/download/0.0.1/stardict.db -o stardict.db
       - uses: vimtor/action-zip@v1
         with:
           files: info.json ${{needs.check.outputs.icon}} plugin.so stardict.db
