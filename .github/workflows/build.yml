@@ -96,6 +96,14 @@ jobs:
       - uses: ConorMacBride/install-package@v1
         with:
           brew: wget
+      - name: Download Database
+        run: |
+          wget https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip
+      - name: extract-7z-action
+        uses: DuckSoft/extract-7z-action@v1.0
+        with:
+          pathSource: ecdict-sqlite-28.zip
+          pathTarget: Database
       - name: Install Rust Stable
         uses: dtolnay/rust-toolchain@stable
       - name: install toolchain
@@ -106,14 +114,6 @@ jobs:
         run: cargo build --release --target ${{ matrix.target }}
       - name: Rename
         run: sudo mv target/${{ matrix.target }}/release/libplugin.dylib ./plugin.dylib
-      - name: Download Database
-        run: |
-          wget https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip
-      - name: extract-7z-action
-        uses: DuckSoft/extract-7z-action@v1.0
-        with:
-          pathSource: ecdict-sqlite-28.zip
-          pathTarget: Database
       - uses: vimtor/action-zip@v1
         with:
           files: info.json ${{needs.check.outputs.icon}} plugin.dylib Database
@@ -157,11 +157,6 @@ jobs:
           fetch-depth: 1
       - name: Install Wget
         run: sudo apt-get install wget -y
-      - name: Build for Linux
-        uses: ./.github/build-for-linux
-        with:
-          target: ${{ matrix.target }}
-          toolchain: stable-${{ matrix.target }}
       - name: Download Database
         run: |
           wget https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip
@@ -170,6 +165,11 @@ jobs:
         with:
           pathSource: ecdict-sqlite-28.zip
           pathTarget: Database
+      - name: Build for Linux
+        uses: ./.github/build-for-linux
+        with:
+          target: ${{ matrix.target }}
+          toolchain: stable-${{ matrix.target }}
       - uses: vimtor/action-zip@v1
         with:
           files: info.json ${{needs.check.outputs.icon}} plugin.so Database
