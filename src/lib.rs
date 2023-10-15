@@ -65,34 +65,52 @@ async fn do_work(text: &str) -> Result<Value, Box<dyn Error>> {
                 "explains": explain_list
             }));
         }
-        for item in exchange.split("/") {
-            let temp = item.split(":").collect::<Vec<&str>>();
-            let word = temp[1];
-            match temp[0] {
-                "p" => associations.push(format!("过去式: {word}")),
-                "d" => associations.push(format!("过去分词: {word}")),
-                "i" => associations.push(format!("现在分词: {word}")),
-                "3" => associations.push(format!("第三人称单数: {word}")),
-                "r" => associations.push(format!("比较级: {word}")),
-                "t" => associations.push(format!("最高级: {word}")),
-                "s" => associations.push(format!("复数: {word}")),
-                "0" => associations.push(format!("Lemma: {word}")),
-                "1" => associations.push(format!("Lemma: {word}")),
-                _ => {}
+        if !exchange.is_empty() {
+            for item in exchange.split("/") {
+                println!("{item}");
+                let temp = item.split(":").collect::<Vec<&str>>();
+
+                let word = temp[1];
+                match temp[0] {
+                    "p" => associations.push(format!("过去式: {word}")),
+                    "d" => associations.push(format!("过去分词: {word}")),
+                    "i" => associations.push(format!("现在分词: {word}")),
+                    "3" => associations.push(format!("第三人称单数: {word}")),
+                    "r" => associations.push(format!("比较级: {word}")),
+                    "t" => associations.push(format!("最高级: {word}")),
+                    "s" => associations.push(format!("复数: {word}")),
+                    "0" => associations.push(format!("Lemma: {word}")),
+                    "1" => associations.push(format!("Lemma: {word}")),
+                    _ => {}
+                }
             }
         }
-        associations.push("".to_string());
-        associations.push(tag);
 
-        return Ok(json!({
-          "pronunciations": [
-            {
-              "symbol": format!("/{phonetic}/")
-            }
-          ],
-          "explanations": explanations,
-          "associations": associations
-        }));
+        if !tag.is_empty() {
+            associations.push("".to_string());
+            associations.push(tag);
+        }
+        let mut result = json!({
+          "explanations": explanations
+        });
+        if !phonetic.is_empty() {
+            result.as_object_mut().unwrap().insert(
+                "pronunciations".to_string(),
+                json!([
+                  {
+                    "symbol": format!("/{phonetic}/")
+                  }
+                ]),
+            );
+        }
+        if !associations.is_empty() {
+            result
+                .as_object_mut()
+                .unwrap()
+                .insert("associations".to_string(), associations.into());
+        }
+
+        return Ok(result);
     }
     Err("Not found".into())
 }
@@ -102,7 +120,7 @@ mod tests {
     #[test]
     fn try_request() {
         let needs = HashMap::new();
-        let result = translate("hello", "auto", "zh_cn", "zh_cn", needs).unwrap();
+        let result = translate("hello", "auto", "zh_cn", "en", needs).unwrap();
         println!("{result}");
     }
 }
