@@ -3,17 +3,17 @@
 ## 支持平台
 
 - [x] Windows
-  - [x] x64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-pc-windows-msvc.zip)
-  - [x] x86 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/i686-pc-windows-msvc.zip)
-  - [x] aarch64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-pc-windows-msvc.zip)
+  - [x] x64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-pc-windows-msvc.zip)
+  - [x] x86 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/i686-pc-windows-msvc.zip)
+  - [x] aarch64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-pc-windows-msvc.zip)
 - [x] Linux
-  - [x] x64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-unknown-linux-gnu.zip)
-  - [x] x86 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/i686-unknown-linux-gnu.zip)
-  - [x] aarch64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-unknown-linux-gnu.zip)
-  - [x] armv7 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/armv7-unknown-linux-gnueabihf.zip)
+  - [x] x64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-unknown-linux-gnu.zip)
+  - [x] x86 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/i686-unknown-linux-gnu.zip)
+  - [x] aarch64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-unknown-linux-gnu.zip)
+  - [x] armv7 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/armv7-unknown-linux-gnueabihf.zip)
 - [x] MacOS
-  - [x] x64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-apple-darwin.zip)
-  - [x] aarch64 [下载](https://ghproxy.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-apple-darwin.zip)
+  - [x] x64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/x86_64-apple-darwin.zip)
+  - [x] aarch64 [下载](https://gh.pylogmon.com/https://github.com/pot-app/pot-app-translate-plugin-ecdict/releases/latest/download/aarch64-apple-darwin.zip)
 
 ## 使用方法
 
