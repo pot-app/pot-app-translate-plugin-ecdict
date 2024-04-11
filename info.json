@@ -3,7 +3,7 @@
   "plugin_type": "translate",
   "icon": "icon.svg",
   "display": "ECDict",
-  "homepage": "https://github.com/pot-app/pot-app-translate-plugin-ectict",
+  "homepage": "https://github.com/pot-app/pot-app-translate-plugin-ecdict",
   "needs": [],
   "language": {
     "auto": "auto",
