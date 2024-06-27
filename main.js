@@ -6,7 +6,7 @@ async function translate(text, _from, _to, options) {
 
     const db = await Database.load(`sqlite:plugins/translate/${id}/stardict.db`);
     let res = await db.select('SELECT * FROM stardict WHERE word = $1', [text]);
-
+    await db.close();
     if (res.length > 0) {
         let result = res[0];
         let phonetic = result.phonetic;
